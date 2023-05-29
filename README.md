@@ -18,16 +18,17 @@ Make sure you have the following dependencies installed:
 
 You can install them by running the following command:
 
-````shell
+```shell
 pip install -r requirements.txt
+```
 
 ## Usage
 
 1. Clone the repository:
 
-   ```bash
-   git clone <repository_url>
-
+   ```shell
+   git clone https://github.com/LucasAbreu89/cat_n_dog_recognizer.git
+   ```
 
 ## How It Works
 
@@ -49,5 +50,3 @@ Additionally, you can replace the cat and dog Annoy indexes with your own indexe
 
 - The MobileNetV2 model is used from the TensorFlow Keras library.
 - The Annoy library is used for efficient approximate nearest neighbor search.
-
-````
