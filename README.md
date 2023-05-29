@@ -26,9 +26,9 @@ pip install -r requirements.txt
 
 1. Clone the repository:
 
-   ```shell
-   git clone https://github.com/LucasAbreu89/cat_n_dog_recognizer.git
-   ```
+```shell
+git clone https://github.com/LucasAbreu89/cat_n_dog_recognizer.git
+```
 
 ## How It Works
 
