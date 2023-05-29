@@ -1,43 +1,53 @@
-import \* as fs from 'fs';
+# Cat or Dog Recognizer
 
-const readmeContent = `# Cat or Dog Recognizer
+A simple web application that uses machine learning to determine whether an uploaded image is a cat or a dog.
 
-This is a simple web application built with Streamlit that can classify uploaded images as either a cat or a dog using the MobileNetV2 model and the Annoy library.
+## Overview
 
-## Installation
+This application utilizes the MobileNetV2 model and the Annoy library to perform image recognition. It allows users to upload an image and provides instant feedback on whether the image contains a cat or a dog.
 
-1. Clone the repository:
+## Requirements
 
-\`\`\`shell
-git clone <repository-url>
-\`\`\`
+Make sure you have the following dependencies installed:
 
-2. Install the required dependencies:
+- streamlit
+- Pillow
+- annoy
+- numpy
+- TensorFlow
 
-\`\`\`shell
+You can install them by running the following command:
+
+````shell
 pip install -r requirements.txt
-\`\`\`
-
-3. Run the application:
-
-\`\`\`shell
-streamlit run app.py
-\`\`\`
-
-Make sure you have Python and pip installed on your machine.
 
 ## Usage
 
-1. Access the web application by visiting the provided local URL (usually http://localhost:8501) in your web browser.
+1. Clone the repository:
 
-2. Click on the "Choose an image..." button to upload an image (supported formats: JPG and PNG).
+   ```bash
+   git clone <repository_url>
 
-3. Wait for the application to analyze the image.
 
-4. The application will display the uploaded image and provide the classification result as either a cat or a dog. If the classification result is inconclusive, it will indicate uncertainty.
+## How It Works
+
+1. The MobileNetV2 model is used as a feature extractor. The last layer of the model is removed to obtain a feature vector of 1280 dimensions.
+2. The uploaded image is resized and preprocessed to match the input requirements of MobileNetV2.
+3. The preprocessed image is passed through the model to obtain its feature vector.
+4. The feature vector is compared with the cat and dog Annoy indexes.
+5. The nearest neighbors in each index are retrieved along with their distances.
+6. If the closest image in the index is below the defined distance threshold, the application identifies the image as a cat or a dog accordingly.
+7. The result is displayed on the web interface.
 
 ## Customization
 
-- You can customize the distance threshold for classification by modifying the \`distanceThreshold\` variable in the \`app.ts\` file.
+You can customize the distance threshold by modifying the `distance_threshold` variable in the `app.py` file.
 
-- To use your own image datasets for training the models, replace the \`cat_images\` and \`dog_images\` folders with your own image folders and retrain the models accordingly.
+Additionally, you can replace the cat and dog Annoy indexes with your own indexes to perform recognition on different categories of images. Make sure the indexes are saved as `cat_images.ann` and `dog_images.ann` in the project directory.
+
+## Acknowledgements
+
+- The MobileNetV2 model is used from the TensorFlow Keras library.
+- The Annoy library is used for efficient approximate nearest neighbor search.
+
+````
